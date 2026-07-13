@@ -3750,11 +3750,11 @@ const supa = {
     } catch(e) { console.warn('[Supa] UPSERT error:', e.message); this._onFailure(e); return null; }
   },
 
-  async delete(table, id) {
+  async delete(table, id, pkCol = 'id') {
     if (!this._check()) return null;
     const { url: SUPA_URL } = getSupaConfig();
     try {
-      const res = await fetch(`${SUPA_URL}/rest/v1/${table}?id=eq.${id}`, {
+      const res = await fetch(`${SUPA_URL}/rest/v1/${table}?${pkCol}=eq.${id}`, {
         method: 'DELETE', headers: this._headers(),
       });
       if (res.ok) this._onSuccess(); else this._onFailure();
@@ -3906,6 +3906,9 @@ const _syncTableMap = {
 
 store.set = function(key, val) {
   const table = _syncTableMap[key];
+  // Certaines tables utilisent "userId" comme clé primaire plutôt que "id"
+  // (un enregistrement par salarié : soldes CP, planning).
+  const pkCol = (table === 'hysfood_soldes_cp' || table === 'hysfood_planning') ? 'userId' : 'id';
   // Diffing AVANT d'écraser le cache : un upsert seul ne supprime jamais les
   // lignes retirées côté Supabase, et l'ancien code ignorait carrément les
   // tableaux vides (donc "tout supprimer" ne se synchronisait jamais).
@@ -3913,8 +3916,8 @@ store.set = function(key, val) {
   if (table && supa.isConfigured() && Array.isArray(val)) {
     const prevVal = store.get(key);
     if (Array.isArray(prevVal)) {
-      const newIds = new Set(val.map(r => r && r.id).filter(Boolean));
-      removedIds = prevVal.filter(r => r && r.id && !newIds.has(r.id)).map(r => r.id);
+      const newIds = new Set(val.map(r => r && r[pkCol]).filter(Boolean));
+      removedIds = prevVal.filter(r => r && r[pkCol] && !newIds.has(r[pkCol])).map(r => r[pkCol]);
     }
   }
   const result = _storeSetOrig(key, val);
@@ -3926,7 +3929,7 @@ store.set = function(key, val) {
       _pendingPushes.push(p);
       p.finally(() => { const i = _pendingPushes.indexOf(p); if (i >= 0) _pendingPushes.splice(i, 1); });
     }
-    removedIds.forEach(id => { supa.delete(table, id).catch(() => {}); });
+    removedIds.forEach(id => { supa.delete(table, id, pkCol).catch(() => {}); });
   }
   // Paramètres : objet unique (pas un tableau de lignes) — stocké dans une
   // seule ligne "global" de hysfood_settings, contrairement aux autres tables.
@@ -4284,7 +4287,7 @@ function initSupabaseRealtime() {
   // Polling léger toutes les 30s pour les tables critiques
   window._realtimePoll = setInterval(async () => {
     if (!navigator.onLine || !supa.isConfigured()) return;
-    const pagesBesoinSync = ['presence-rt', 'planning', 'conges-admin'];
+    const pagesBesoinSync = ['presence-rt', 'conges-admin'];
     if (pagesBesoinSync.includes(currentPage)) {
       const pts = await supa.select('hysfood_pointages', 'limit=200');
       if (pts) { store.set('hysfood_pointages', pts); store.invalidate('hysfood_pointages'); }
