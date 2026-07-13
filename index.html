@@ -5290,7 +5290,7 @@ const supa = {
     if (!this._check()) return null;
     const { url: SUPA_URL } = getSupaConfig();
     try {
-      const orderCol = table === 'hysfood_soldes_cp' ? 'userId' : (table === 'hysfood_settings' ? 'updatedAt' : 'createdAt');
+      const orderCol = (table === 'hysfood_soldes_cp' || table === 'hysfood_planning') ? 'userId' : (table === 'hysfood_settings' ? 'updatedAt' : 'createdAt');
       const url = `${SUPA_URL}/rest/v1/${table}?${filters}&order=${orderCol}.desc.nullslast`;
       const res = await fetch(url, { headers: this._headers() });
       if (!res.ok) { console.warn(`[Supa] SELECT ${table}:`, res.status); this._onFailure(); return null; }
@@ -6529,17 +6529,12 @@ function stopRealtime() {
   _realtimeChannels = [];
 }
 
-// ─── STORE MODULES ────────────────────────────────────────────────────────────
+// ─── STORE MODULES (fonctionnalité désactivée pour HYS FOOD — non synchronisée) ─
 const SK_MODULES = 'hysfood_modules';
 Object.assign(store, {
   modules()        { return this.get(SK_MODULES) || []; },
   saveModules(m)   { this.set(SK_MODULES, m); },
 });
-
-// Ajouter modules à la sync Supabase
-if (typeof SYNC_MAP !== 'undefined') {
-  SYNC_MAP.push({ table: 'hysfood_modules', sk: SK_MODULES, label: 'Modules' });
-}
 
 // ─── PAGE: GESTION DES MODULES ────────────────────────────────────────────────
 function renderPageModules(filterPromo = '', search = '') {
