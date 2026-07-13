@@ -714,8 +714,8 @@ const ROLE_LABELS = {
 
 // ─── TYPES DE DEMI-JOURNÉE ──────────────────────────────────────────────────
 const DEMIJOURNEES = {
-  matin:    { label:'Matin',    icon:'🌅', heureDebut:'08:00', heureFin:'12:00' },
-  apresmidi:{ label:'Après-midi',icon:'🌇', heureDebut:'13:00', heureFin:'16:00' },
+  matin:    { label:'Créneau 1', icon:'🌞', heureDebut:'10:00', heureFin:'16:00' },
+  apresmidi:{ label:'Créneau 2', icon:'🌆', heureDebut:'16:00', heureFin:'22:00' },
 };
 
 // ─── ÉTAT GLOBAL ────────────────────────────────────────────────────────────
@@ -762,8 +762,8 @@ const store = {
     const defs = {
       organisation: 'HYS FOOD',
       territoire: 'mayotte',
-      heureDebut: '08:00',
-      heureFin: '20:00',
+      heureDebut: '10:00',
+      heureFin: '22:00',
       pauseDejeIner: 60,
     };
     return Object.assign({}, defs, this.get(SK.SETTINGS) || {});
@@ -1264,7 +1264,7 @@ function renderPagePointage() {
       <div class="pointage-section">
         <button class="pointage-btn pointage-btn-entree" id="btn-entree" ${isIn?'disabled':''}>
           <span class="icon">✅</span><span>Pointer Entrée</span>
-          <span class="sub">${store.settings().heureDebut||'08:00'} · Alt+E</span>
+          <span class="sub">${store.settings().heureDebut||'10:00'} · Alt+E</span>
         </button>
         <button class="pointage-btn pointage-btn-sortie" id="btn-sortie" ${!isIn?'disabled':''}>
           <span class="icon">🚪</span><span>Pointer Sortie</span>
@@ -1828,10 +1828,10 @@ function renderPageParametres() {
             <input id="set-org" class="form-control" value="${s.organisation||'HYS FOOD'}" style="max-width:300px">
           </div>
           <div class="form-group"><label>Heure de début (défaut)</label>
-            <input id="set-hdeb" type="time" class="form-control" value="${s.heureDebut||'08:00'}" style="max-width:140px">
+            <input id="set-hdeb" type="time" class="form-control" value="${s.heureDebut||'10:00'}" style="max-width:140px">
           </div>
           <div class="form-group"><label>Heure de fin (défaut)</label>
-            <input id="set-hfin" type="time" class="form-control" value="${s.heureFin||'20:00'}" style="max-width:140px">
+            <input id="set-hfin" type="time" class="form-control" value="${s.heureFin||'22:00'}" style="max-width:140px">
           </div>
         </div>
         <div class="settings-section">
@@ -1988,12 +1988,12 @@ function getExpectedScheduleForUser(userId, dateStr) {
   if (!planning) {
     if (!isJourOuvrable(dateStr)) return null;
     const s = store.settings();
-    const heureDebut = s.heureDebut||'08:00', heureFin = s.heureFin||'20:00';
+    const heureDebut = s.heureDebut||'10:00', heureFin = s.heureFin||'22:00';
     return { lieu:'hys_food', heureDebut, heureFin, creneaux:[{debut:heureDebut,fin:heureFin}] };
   }
   const jour = planning.jours?.[jourKeyFromDate(dateStr)];
   if (!jour || jour.lieu !== 'hys_food') return null;
-  const creneaux = (jour.creneaux && jour.creneaux.length) ? jour.creneaux : [{debut:jour.heureDebut||'08:00', fin:jour.heureFin||'20:00'}];
+  const creneaux = (jour.creneaux && jour.creneaux.length) ? jour.creneaux : [{debut:jour.heureDebut||'10:00', fin:jour.heureFin||'22:00'}];
   return { lieu:'hys_food', heureDebut: creneaux[0].debut, heureFin: creneaux[creneaux.length-1].fin, creneaux };
 }
 // Formate les créneaux d'un jour en texte lisible : "10h-17h" ou "11h-15h / 18h-22h"
@@ -2012,12 +2012,12 @@ function getCreneauPointageStatus(attendu, pts) {
   let retardIdx = null, oubliIdx = null;
   creneaux.forEach((c, i) => {
     if (retardIdx === null && entrees.length <= i) {
-      const [hD, mD] = (c.debut||'08:00').split(':').map(Number);
+      const [hD, mD] = (c.debut||'10:00').split(':').map(Number);
       const seuil = new Date(now); seuil.setHours(hD, mD + RETARD_TOLERANCE_MIN, 0, 0);
       if (now > seuil) retardIdx = i;
     }
     if (oubliIdx === null && entrees.length > i && sorties.length <= i) {
-      const [hF, mF] = (c.fin||'20:00').split(':').map(Number);
+      const [hF, mF] = (c.fin||'22:00').split(':').map(Number);
       const seuil = new Date(now); seuil.setHours(hF, mF + OUBLI_SORTIE_TOLERANCE_MIN, 0, 0);
       if (now > seuil) oubliIdx = i;
     }
@@ -2222,7 +2222,7 @@ function showModalEditPlanning(userId) {
   if (!u) return;
   const planning = store.getPlanningUser(userId);
   const s = store.settings();
-  const defCreneau = [{ debut: s.heureDebut||'08:00', fin: s.heureFin||'20:00' }];
+  const defCreneau = [{ debut: s.heureDebut||'10:00', fin: s.heureFin||'22:00' }];
 
   const overlay = document.createElement('div');
   overlay.className = 'modal-overlay open';
@@ -2316,7 +2316,7 @@ function renderPageMonPlanning() {
       </div>
     </div>
     <div class="page-body">
-      ${!planning ? `<div class="alert alert-info">Aucun planning personnalisé n'a encore été configuré pour vous — les horaires par défaut de l'organisation s'appliquent (${s.heureDebut||'08:00'}–${s.heureFin||'20:00'}, jours ouvrés).</div>` : ''}
+      ${!planning ? `<div class="alert alert-info">Aucun planning personnalisé n'a encore été configuré pour vous — les horaires par défaut de l'organisation s'appliquent (${s.heureDebut||'10:00'}–${s.heureFin||'22:00'}, jours ouvrés).</div>` : ''}
       <div class="card">
         <div class="table-wrap"><table>
           <thead><tr><th>Jour</th><th>Lieu</th><th>Horaires</th></tr></thead>
@@ -3349,7 +3349,7 @@ async function generatePDFBonConge(absenceId) {
       ['Nom & Prénom', user ? `${user.prenom} ${user.nom}` : '—'],
       ['Fonction', user?.service || '—'],
       ['Date d\'entrée', user?.dateEntree || '—'],
-      ['Organisme', settings.organisation || 'HYS Consulting'],
+      ['Organisme', settings.organisation || 'HYS FOOD'],
     ];
     rows.forEach(([label, val], i) => {
       const ry = y + 16 + i * lineH;
@@ -4322,11 +4322,11 @@ function stopRealtime() {
 // ─── SYNC EXCEL — EXPORT COMPATIBLE SUIVI_CONGES ──────────────────────────────
 function exportSyncExcel() {
   const today  = dateStr(new Date());
-  const collabs = store.users().filter(u=>u.role===ROLES.COLLAB&&u.statut==='actif');
+  const collabs = store.users().filter(u=>(u.role===ROLES.COLLAB||u.role===ROLES.ADMIN)&&u.statut==='actif');
 
   // Feuille 1 : Suivi congés (compatible Suivi_Conges_GroupeHYS.xlsx)
   const rows1 = [
-    ['SUIVI DES CONGÉS — HYS CONSULTING', '', '', '', '', '', '', '', ''],
+    ['SUIVI DES CONGÉS — HYS FOOD', '', '', '', '', '', '', '', ''],
     ['Exporté le : '+new Date().toLocaleDateString('fr-FR'), '', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
     ['NOM', 'PRÉNOM', 'FONCTION', 'DATE ENTRÉE', 'RELIQUAT N-1', 'ACQUIS N (2026-27)', 'CP PRIS', 'SOLDE N-1 RESTANT', 'SOLDE N RESTANT', 'TOTAL DISPO'],
@@ -4605,8 +4605,8 @@ async function initDefaultData() {
     store.saveSettings({
       organisation: 'HYS FOOD',
       territoire: 'mayotte',
-      heureDebut: '08:00',
-      heureFin: '20:00',
+      heureDebut: '10:00',
+      heureFin: '22:00',
       pauseDejeIner: 60,
     });
     store.addAudit({ action:'INIT', userId:'system', detail:'HYS FOOD Horodateur v1.0 initialisé — Compte admin créé (admin.hysfood)' });
