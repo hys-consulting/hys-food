@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#2ebd6b">
+<meta name="theme-color" content="#E4392E">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -15,8 +15,9 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   /* HYS Brand */
-  --hys-green:#2ebd6b;--hys-green2:#22a058;--hys-green3:#1a7d44;
-  --hys-green-light:#e8f7ef;--hys-green-mid:#c5e8d5;
+  --hys-green:#E4392E;--hys-green2:#C42A20;--hys-green3:#8F1F17;
+  --hys-green-light:#FFF6D9;--hys-green-mid:#FFD966;
+  --hys-yellow:#FFC72C;--hys-yellow2:#F4A900;
   --hys-dark:#2a2a2a;--hys-dark2:#3a3a3a;
 
   /* Light theme */
@@ -37,7 +38,7 @@
   --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
   --shadow-md:0 4px 6px rgba(0,0,0,.07),0 10px 30px rgba(0,0,0,.08);
   --shadow-lg:0 10px 25px rgba(0,0,0,.1),0 20px 48px rgba(0,0,0,.08);
-  --shadow-green:0 4px 20px rgba(46,189,107,.25);
+  --shadow-green:0 4px 20px rgba(228,57,46,.25);
   --radius:14px;--radius-sm:10px;--radius-xs:6px;--radius-pill:100px;
   --font:'Segoe UI',system-ui,-apple-system,sans-serif;
   --transition:.18s cubic-bezier(.4,0,.2,1);
@@ -66,7 +67,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .view{display:none;min-height:100vh}
 .view.active{display:block}
 #view-login{display:none;align-items:center;justify-content:center;min-height:100vh;
-  background:linear-gradient(135deg,#f0f9f4 0%,#e8f7ef 40%,#f0f4f8 100%)}
+  background:linear-gradient(135deg,#FFFBEA 0%,#FFF6D9 40%,#f0f4f8 100%)}
 #view-login.active{display:flex}
 
 /* ── LOGIN ── */
@@ -80,7 +81,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 }
 .login-box::before{
   content:'';position:absolute;top:0;left:0;right:0;height:4px;
-  background:linear-gradient(90deg,var(--hys-green),var(--hys-green2));
+  background:linear-gradient(90deg,var(--hys-green),var(--hys-yellow));
 }
 .login-logo{text-align:center;margin-bottom:24px}
 .login-logo .brand{font-size:28px;font-weight:900;letter-spacing:-.5px;margin-top:12px;color:var(--hys-dark)}
@@ -101,7 +102,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .form-control:hover{border-color:var(--border2)}
 .form-control:focus{
   border-color:var(--hys-green);background:var(--card);
-  box-shadow:0 0 0 3px rgba(46,189,107,.12);
+  box-shadow:0 0 0 3px rgba(228,57,46,.12);
 }
 .form-control option{background:var(--card)}
 select.form-control{cursor:pointer}
@@ -129,7 +130,7 @@ select.form-control{cursor:pointer}
 .btn:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
 
 .btn-primary{background:linear-gradient(135deg,var(--hys-green),var(--hys-green2));color:#fff;box-shadow:var(--shadow-green)}
-.btn-primary:hover{box-shadow:0 6px 24px rgba(46,189,107,.35);transform:translateY(-1px)}
+.btn-primary:hover{box-shadow:0 6px 24px rgba(228,57,46,.35);transform:translateY(-1px)}
 .btn-success{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;box-shadow:0 4px 12px rgba(34,197,94,.25)}
 .btn-danger{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;box-shadow:0 4px 12px rgba(239,68,68,.2)}
 .btn-amber{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;box-shadow:0 4px 12px rgba(245,158,11,.2)}
@@ -162,10 +163,10 @@ select.form-control{cursor:pointer}
 .sidebar-header{
   padding:22px 18px 18px;
   border-bottom:1px solid rgba(255,255,255,.08);
-  background:linear-gradient(180deg,rgba(46,189,107,.12) 0%,transparent 100%);
+  background:linear-gradient(180deg,rgba(228,57,46,.12) 0%,transparent 100%);
 }
 .sidebar-brand{display:flex;align-items:center;gap:12px}
-.sidebar-brand svg{width:38px;height:38px;flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(46,189,107,.4))}
+.sidebar-brand svg{width:38px;height:38px;flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(228,57,46,.4))}
 .brand-text .name{font-size:16px;font-weight:900;letter-spacing:-.3px;color:#fff}
 .brand-text .name .hys-g{color:var(--hys-green)}
 .brand-text .version{font-size:10px;color:rgba(255,255,255,.4);margin-top:1px}
@@ -179,7 +180,7 @@ select.form-control{cursor:pointer}
   width:36px;height:36px;border-radius:50%;display:flex;align-items:center;
   justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;
   background:linear-gradient(135deg,var(--hys-green),var(--hys-green2));color:#fff;
-  box-shadow:0 2px 8px rgba(46,189,107,.3);
+  box-shadow:0 2px 8px rgba(228,57,46,.3);
 }
 .user-name{font-size:12px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .user-meta{font-size:10px;color:var(--hys-green);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
@@ -196,7 +197,7 @@ select.form-control{cursor:pointer}
 }
 .nav-item:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.9)}
 .nav-item.active{
-  color:#fff;background:rgba(46,189,107,.2);font-weight:600;
+  color:#fff;background:rgba(228,57,46,.2);font-weight:600;
   box-shadow:inset 3px 0 0 var(--hys-green);
 }
 .nav-icon{font-size:15px;width:20px;text-align:center;flex-shrink:0}
@@ -530,38 +531,38 @@ input:checked + .toggle-slider:before{transform:translateX(20px)}
     <symbol id="hys-logo" viewBox="0 0 200 200">
       <!-- Hexagone externe -->
       <polygon points="100,4 185,50 185,150 100,196 15,150 15,50"
-        fill="none" stroke="#2ebd6b" stroke-width="6" stroke-linejoin="round"/>
+        fill="none" stroke="#E4392E" stroke-width="6" stroke-linejoin="round"/>
       <!-- H gauche — piliers verticaux -->
       <rect x="26" y="58" width="22" height="84" rx="3" fill="#3a3a3a"/>
       <rect x="68" y="58" width="22" height="84" rx="3" fill="#3a3a3a"/>
       <!-- H — barre transversale -->
       <rect x="26" y="92" width="64" height="18" rx="3" fill="#3a3a3a"/>
       <!-- S droite — barre haute -->
-      <rect x="108" y="58" width="62" height="20" rx="3" fill="#2ebd6b"/>
+      <rect x="108" y="58" width="62" height="20" rx="3" fill="#E4392E"/>
       <!-- S — coude haut gauche -->
-      <rect x="108" y="58" width="20" height="38" rx="3" fill="#2ebd6b"/>
+      <rect x="108" y="58" width="20" height="38" rx="3" fill="#E4392E"/>
       <!-- S — barre médiane -->
-      <rect x="108" y="90" width="62" height="18" rx="3" fill="#2ebd6b"/>
+      <rect x="108" y="90" width="62" height="18" rx="3" fill="#E4392E"/>
       <!-- S — coude bas droite -->
-      <rect x="150" y="90" width="20" height="38" rx="3" fill="#2ebd6b"/>
+      <rect x="150" y="90" width="20" height="38" rx="3" fill="#E4392E"/>
       <!-- S — barre basse -->
-      <rect x="108" y="122" width="62" height="20" rx="3" fill="#2ebd6b"/>
+      <rect x="108" y="122" width="62" height="20" rx="3" fill="#E4392E"/>
       <!-- Accent vert coin haut droit -->
-      <polygon points="155,58 170,58 170,73" fill="#22a058"/>
+      <polygon points="155,58 170,58 170,73" fill="#FFC72C"/>
       <!-- Accent sombre coin bas gauche -->
       <polygon points="26,142 41,142 26,157" fill="#2a2a2a"/>
     </symbol>
     <!-- Version compacte pour petits espaces -->
     <symbol id="hys-logo-sm" viewBox="0 0 100 100">
-      <polygon points="50,3 93,26 93,74 50,97 7,74 7,26" fill="none" stroke="#2ebd6b" stroke-width="4"/>
+      <polygon points="50,3 93,26 93,74 50,97 7,74 7,26" fill="none" stroke="#E4392E" stroke-width="4"/>
       <rect x="12" y="30" width="11" height="40" rx="2" fill="#3a3a3a"/>
       <rect x="33" y="30" width="11" height="40" rx="2" fill="#3a3a3a"/>
       <rect x="12" y="46" width="32" height="9" rx="2" fill="#3a3a3a"/>
-      <rect x="54" y="30" width="32" height="10" rx="2" fill="#2ebd6b"/>
-      <rect x="54" y="30" width="10" height="18" rx="2" fill="#2ebd6b"/>
-      <rect x="54" y="44" width="32" height="9" rx="2" fill="#2ebd6b"/>
-      <rect x="76" y="44" width="10" height="18" rx="2" fill="#2ebd6b"/>
-      <rect x="54" y="60" width="32" height="10" rx="2" fill="#2ebd6b"/>
+      <rect x="54" y="30" width="32" height="10" rx="2" fill="#E4392E"/>
+      <rect x="54" y="30" width="10" height="18" rx="2" fill="#E4392E"/>
+      <rect x="54" y="44" width="32" height="9" rx="2" fill="#E4392E"/>
+      <rect x="76" y="44" width="10" height="18" rx="2" fill="#E4392E"/>
+      <rect x="54" y="60" width="32" height="10" rx="2" fill="#E4392E"/>
     </symbol>
   </defs>
 </svg>
@@ -612,7 +613,7 @@ input:checked + .toggle-slider:before{transform:translateX(20px)}
 
 <!-- CHANGE PASSWORD VIEW -->
 <div class="view" id="view-change-pwd">
-  <div style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#f0f9f4 0%,#e8f7ef 40%,#f0f4f8 100%)">
+  <div style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#FFFBEA 0%,#FFF6D9 40%,#f0f4f8 100%)">
     <div class="login-box">
       <div class="login-logo">
         <svg width="52" height="52" viewBox="0 0 200 200"><use href="#hys-logo"/></svg>
@@ -998,20 +999,18 @@ const OUBLI_SORTIE_TOLERANCE_MIN = 60; // marge après l'heure de fin avant de s
 
 function getPointageIssuesDuJour() {
   const now = new Date();
-  const jour = now.getDay(); // 0=dimanche, 6=samedi
-  const result = { retards: [], oublis: [] };
-  if (jour === 0 || jour === 6) return result; // pas de contrôle le week-end
-
   const today = dateStr(now);
-  const settings = store.settings();
-  const [hD, mD] = (settings.heureDebut||'08:00').split(':').map(Number);
-  const [hF, mF] = (settings.heureFin||'16:00').split(':').map(Number);
-  const seuilRetard = new Date(now); seuilRetard.setHours(hD, mD + RETARD_TOLERANCE_MIN, 0, 0);
-  const seuilOubli  = new Date(now); seuilOubli.setHours(hF, mF + OUBLI_SORTIE_TOLERANCE_MIN, 0, 0);
+  const result = { retards: [], oublis: [] };
 
-  const collabs = store.users().filter(u => u.statut === 'actif' && u.role === ROLES.COLLAB);
+  const collabs = store.users().filter(u => u.statut === 'actif' && (u.role === ROLES.COLLAB || u.role === ROLES.ADMIN));
   collabs.forEach(u => {
     if (isAbsentAujourdHui(u.id)) return; // en congé/absence approuvée : pas un retard
+    const attendu = getExpectedScheduleForUser(u.id, today);
+    if (!attendu) return; // repos, ou journée CFA : aucun pointage HYS FOOD attendu
+    const [hD, mD] = attendu.heureDebut.split(':').map(Number);
+    const [hF, mF] = attendu.heureFin.split(':').map(Number);
+    const seuilRetard = new Date(now); seuilRetard.setHours(hD, mD + RETARD_TOLERANCE_MIN, 0, 0);
+    const seuilOubli  = new Date(now); seuilOubli.setHours(hF, mF + OUBLI_SORTIE_TOLERANCE_MIN, 0, 0);
     const pts = getPointagesUserDay(u.id, today);
     const entree = pts.find(p => p.type === 'entree');
     const sortie = [...pts].reverse().find(p => p.type === 'sortie');
@@ -1159,6 +1158,7 @@ function getNavPages() {
     { id:'pointage',        label:'Mon pointage',       icon:'⏱️' },
     { id:'mon-historique',  label:'Mon historique',     icon:'📋' },
     { id:'mes-conges',      label:'Mes congés',         icon:'🌴' },
+    { id:'mon-planning',    label:'Mon planning',       icon:'🗓️' },
     { section:'TABLEAU DE BORD' },
     { id:'dashboard',       label:'Tableau de bord',   icon:'📊' },
     { id:'pointage-admin',  label:'Pointages',          icon:'⏱️' },
@@ -1166,6 +1166,7 @@ function getNavPages() {
     { id:'notifications',   label:'Notifications',        icon:'🔔' },
     { section:'GESTION' },
     { id:'utilisateurs',    label:'Utilisateurs',       icon:'👥' },
+    { id:'planning',        label:'Planning',           icon:'🗓️' },
     { id:'audit',           label:'Journal d\'audit',   icon:'🛡️' },
     { id:'export',          label:'Export',             icon:'📤' },
     { id:'parametres',      label:'Paramètres',         icon:'⚙️' },
@@ -1722,8 +1723,8 @@ function printEmargement(emargId) {
   const settings = store.settings();
   const hysLogoSVG = `<svg width="48" height="48" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
       <polygon points="8,28 8,72 22,72 22,54 38,54 38,72 52,72 52,28 38,28 38,44 22,44 22,28" fill="#3a3a3a"/>
-      <path d="M55,28 L92,28 L92,44 L70,44 L70,54 L92,54 L92,72 L55,72 L55,56 L77,56 L77,46 L55,46 Z" fill="#2ebd6b"/>
-      <polygon points="78,28 92,28 92,42" fill="#2ebd6b"/>
+      <path d="M55,28 L92,28 L92,44 L70,44 L70,54 L92,54 L92,72 L55,72 L55,56 L77,56 L77,46 L55,46 Z" fill="#E4392E"/>
+      <polygon points="78,28 92,28 92,42" fill="#E4392E"/>
       <polygon points="8,72 22,72 8,58" fill="#3a3a3a"/>
     </svg>`;
   const html = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
@@ -2592,6 +2593,7 @@ const SK_V2 = {
   ABSENCES:  'hysfood_absences',
   TACHES:    'hysfood_taches',
   SOLDES_CP: 'hysfood_soldes_cp',
+  PLANNING:  'hysfood_planning',
 };
 Object.assign(store, {
   absences()        { return this.get(SK_V2.ABSENCES) || []; },
@@ -2609,7 +2611,55 @@ Object.assign(store, {
     all.push(solde);
     this.saveSoldesCP(all);
   },
+  planning()         { return this.get(SK_V2.PLANNING) || []; },
+  savePlanning(p)    { this.set(SK_V2.PLANNING, p); },
+  getPlanningUser(userId) {
+    return this.planning().find(p => p.userId === userId) || null;
+  },
+  savePlanningUser(userId, jours) {
+    const all = this.planning().filter(p => p.userId !== userId);
+    all.push({ userId, jours, updatedAt: now() });
+    this.savePlanning(all);
+  },
 });
+
+// ─── PLANNING HEBDOMADAIRE ────────────────────────────────────────────────────
+// Jours de la semaine (clé interne -> libellé). Sert de référence unique.
+const JOURS_SEMAINE = [
+  { key:'lundi',    label:'Lundi' },
+  { key:'mardi',    label:'Mardi' },
+  { key:'mercredi', label:'Mercredi' },
+  { key:'jeudi',    label:'Jeudi' },
+  { key:'vendredi', label:'Vendredi' },
+  { key:'samedi',   label:'Samedi' },
+  { key:'dimanche', label:'Dimanche' },
+];
+const LIEUX_PLANNING = {
+  hys_food: { label:'HYS FOOD',              icon:'🍟', badge:'badge-red'    },
+  cfa:      { label:'CFA (HYS Consulting)',  icon:'🎓', badge:'badge-blue'   },
+  repos:    { label:'Repos',                 icon:'💤', badge:'badge-gray'   },
+};
+function jourKeyFromDate(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  const idx = d.getDay(); // 0=dimanche..6=samedi
+  return ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'][idx];
+}
+// Renvoie le programme attendu d'un salarié pour une date donnée :
+// { lieu, heureDebut, heureFin } si travail attendu chez HYS FOOD ce jour-là,
+// ou null si aucun pointage HYS FOOD n'est attendu (repos, ou journée en CFA).
+// Si aucun planning n'a été configuré pour ce salarié, retourne les horaires
+// par défaut de l'organisation (comportement historique, jours ouvrés uniquement).
+function getExpectedScheduleForUser(userId, dateStr) {
+  const planning = store.getPlanningUser(userId);
+  if (!planning) {
+    if (!isJourOuvrable(dateStr)) return null;
+    const s = store.settings();
+    return { lieu:'hys_food', heureDebut: s.heureDebut||'08:00', heureFin: s.heureFin||'20:00' };
+  }
+  const jour = planning.jours?.[jourKeyFromDate(dateStr)];
+  if (!jour || jour.lieu !== 'hys_food') return null;
+  return { lieu:'hys_food', heureDebut: jour.heureDebut||'08:00', heureFin: jour.heureFin||'20:00' };
+}
 
 // ─── CALCUL JOURS OUVRABLES MAYOTTE ──────────────────────────────────────────
 function isJourOuvrable(dateStr) {
@@ -2711,6 +2761,7 @@ getNavPages = function() {
       { id:'pointage-tache',   label:'Pointage mission',  icon:'🎯' },
       { id:'mon-historique',   label:'Mon historique',    icon:'📋' },
       { id:'mes-conges',       label:'Mes congés',        icon:'🌴' },
+      { id:'mon-planning',     label:'Mon planning',      icon:'🗓️' },
     ];
   }
   if (role === ROLES.ADMIN) {
@@ -2737,6 +2788,8 @@ navigateTo = function(pageId) {
     'conges-admin':     renderPageCongesAdmin,
     'rapport-mensuel':  renderPageRapportMensuel,
     'planning-cfa':     renderPagePlanningCFA,
+    'planning':         renderPagePlanning,
+    'mon-planning':     renderPageMonPlanning,
     'dashboard-dg':     renderPageDashboardDG,
     'qualiopi':         renderPageQualiopi,
     'modules':          renderPageModules,
@@ -2760,6 +2813,142 @@ navigateTo = function(pageId) {
     _navigateOrig(pageId);
   }
 };
+
+// ─── PAGE: PLANNING HEBDOMADAIRE (Admin) ─────────────────────────────────────
+function renderPagePlanning() {
+  const users = store.users().filter(u => u.statut === 'actif' && (u.role === ROLES.COLLAB || u.role === ROLES.ADMIN));
+
+  const main = document.getElementById('main-content');
+  main.innerHTML = `
+    <div class="page-header">
+      <div class="page-header-left">
+        <h2>🗓️ Planning hebdomadaire</h2>
+        <p>Définir, pour chaque salarié, les jours travaillés chez HYS FOOD, en CFA, ou en repos</p>
+      </div>
+    </div>
+    <div class="page-body">
+      <div class="alert alert-info" style="margin-bottom:16px">ℹ️ Ce planning pilote automatiquement la détection des retards/oublis de pointage — un jour marqué "CFA" ou "Repos" n'est pas signalé comme un retard.</div>
+      <div class="card">
+        <div class="table-wrap"><table>
+          <thead><tr>
+            <th>Salarié</th>
+            ${JOURS_SEMAINE.map(j => `<th style="text-align:center">${j.label.slice(0,3)}</th>`).join('')}
+            <th>Actions</th>
+          </tr></thead>
+          <tbody>${users.map(u => {
+            const planning = store.getPlanningUser(u.id);
+            return `<tr>
+              <td class="td-bold">${esc(u.prenom)} ${esc(u.nom)}<div class="text-xs text-muted">${esc(u.service)||''}</div></td>
+              ${JOURS_SEMAINE.map(j => {
+                const jour = planning?.jours?.[j.key];
+                const lieu = jour?.lieu ? LIEUX_PLANNING[jour.lieu] : null;
+                return `<td style="text-align:center">
+                  ${lieu ? `<span class="badge ${lieu.badge}" title="${lieu.label}${jour.lieu==='hys_food'?' · '+jour.heureDebut+'–'+jour.heureFin:''}">${lieu.icon}</span>` : `<span class="text-muted">—</span>`}
+                </td>`;
+              }).join('')}
+              <td><button class="btn btn-ghost btn-xs plan-edit" data-uid="${u.id}">✏️ Modifier</button></td>
+            </tr>`;
+          }).join('')}</tbody>
+        </table></div>
+      </div>
+    </div>`;
+  document.querySelectorAll('.plan-edit').forEach(btn => {
+    btn.addEventListener('click', () => showModalEditPlanning(btn.getAttribute('data-uid')));
+  });
+}
+
+function showModalEditPlanning(userId) {
+  const u = store.users().find(x => x.id === userId);
+  if (!u) return;
+  const planning = store.getPlanningUser(userId);
+  const s = store.settings();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.innerHTML = `
+    <div class="modal" style="max-width:640px">
+      <div class="modal-header">
+        <h3>🗓️ Planning — ${esc(u.prenom)} ${esc(u.nom)}</h3>
+        <button class="modal-close" id="plan-modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-xs text-muted" style="margin-bottom:12px">Pour chaque jour, choisissez où le/la salarié(e) travaille. Les horaires ne sont utilisés que pour les jours "HYS FOOD".</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Jour</th><th>Lieu</th><th>Début</th><th>Fin</th></tr></thead>
+          <tbody>${JOURS_SEMAINE.map(j => {
+            const jour = planning?.jours?.[j.key] || { lieu:'hys_food', heureDebut: s.heureDebut||'08:00', heureFin: s.heureFin||'20:00' };
+            return `<tr>
+              <td class="td-bold">${j.label}</td>
+              <td>
+                <select class="form-control plan-lieu" data-jour="${j.key}" style="min-width:170px">
+                  ${Object.entries(LIEUX_PLANNING).map(([k,v]) => `<option value="${k}" ${jour.lieu===k?'selected':''}>${v.icon} ${v.label}</option>`).join('')}
+                </select>
+              </td>
+              <td><input type="time" class="form-control plan-debut" data-jour="${j.key}" value="${jour.heureDebut||s.heureDebut||'08:00'}" style="width:110px"></td>
+              <td><input type="time" class="form-control plan-fin" data-jour="${j.key}" value="${jour.heureFin||s.heureFin||'20:00'}" style="width:110px"></td>
+            </tr>`;
+          }).join('')}</tbody>
+        </table></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="plan-modal-cancel">Annuler</button>
+        <button class="btn btn-primary" id="plan-modal-save">Enregistrer</button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  const close = () => overlay.remove();
+  overlay.querySelector('#plan-modal-close').addEventListener('click', close);
+  overlay.querySelector('#plan-modal-cancel').addEventListener('click', close);
+  overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+
+  overlay.querySelector('#plan-modal-save').addEventListener('click', () => {
+    const jours = {};
+    JOURS_SEMAINE.forEach(j => {
+      const lieu = overlay.querySelector(`.plan-lieu[data-jour="${j.key}"]`).value;
+      const heureDebut = overlay.querySelector(`.plan-debut[data-jour="${j.key}"]`).value;
+      const heureFin = overlay.querySelector(`.plan-fin[data-jour="${j.key}"]`).value;
+      jours[j.key] = { lieu, heureDebut, heureFin };
+    });
+    store.savePlanningUser(userId, jours);
+    store.addAudit({ action:'PLANNING_UPDATE', userId: currentUser.id, detail:`Planning mis à jour pour ${u.prenom} ${u.nom}` });
+    close();
+    toast('Planning enregistré.', 'success');
+    renderPagePlanning();
+  });
+}
+
+// ─── PAGE: MON PLANNING (lecture seule) ──────────────────────────────────────
+function renderPageMonPlanning() {
+  const planning = store.getPlanningUser(currentUser.id);
+  const s = store.settings();
+
+  const main = document.getElementById('main-content');
+  main.innerHTML = `
+    <div class="page-header">
+      <div class="page-header-left">
+        <h2>🗓️ Mon planning</h2>
+        <p>Vos jours de travail de la semaine</p>
+      </div>
+    </div>
+    <div class="page-body">
+      ${!planning ? `<div class="alert alert-info">Aucun planning personnalisé n'a encore été configuré pour vous — les horaires par défaut de l'organisation s'appliquent (${s.heureDebut||'08:00'}–${s.heureFin||'20:00'}, jours ouvrés).</div>` : ''}
+      <div class="card">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Jour</th><th>Lieu</th><th>Horaires</th></tr></thead>
+          <tbody>${JOURS_SEMAINE.map(j => {
+            const jour = planning?.jours?.[j.key];
+            const lieu = jour?.lieu ? LIEUX_PLANNING[jour.lieu] : (isJourOuvrable(dateStr(new Date())) ? LIEUX_PLANNING.hys_food : LIEUX_PLANNING.repos);
+            return `<tr>
+              <td class="td-bold">${j.label}</td>
+              <td><span class="badge ${lieu.badge}">${lieu.icon} ${lieu.label}</span></td>
+              <td class="td-mono text-xs">${jour?.lieu==='hys_food' ? (jour.heureDebut+' – '+jour.heureFin) : '—'}</td>
+            </tr>`;
+          }).join('')}</tbody>
+        </table></div>
+      </div>
+    </div>`;
+}
 
 // ─── PAGE: POINTAGE PAR TÂCHE (Collaborateur) ────────────────────────────────
 function renderPagePointageTache() {
@@ -3057,9 +3246,9 @@ function renderPagePresenceRT() {
           <div class="stat-sub">CP / maladie / autre</div>
         </div>
         <div class="stat-card blue">
-          <div class="stat-label">Formateurs actifs</div>
-          <div class="stat-value blue">${formateurs.filter(u=>{const pts=getPointagesUserDay(u.id,today);return pts.length>0&&pts[pts.length-1].type==='entree';}).length}</div>
-          <div class="stat-sub">sur ${formateurs.length}</div>
+          <div class="stat-label">Heures cumulées</div>
+          <div class="stat-value blue">${formatDuree(collabs.reduce((acc,u)=>acc+calcHeuresJour(getPointagesUserDay(u.id,today)),0))}</div>
+          <div class="stat-sub">aujourd'hui</div>
         </div>
         <div class="stat-card amber">
           <div class="stat-label">Retards / Oublis</div>
@@ -3075,7 +3264,7 @@ function renderPagePresenceRT() {
 
       <!-- Collaborateurs -->
       <div class="card">
-        <div class="card-header"><div class="card-title">👥 Collaborateurs HYS Consulting — ${today}</div>
+        <div class="card-header"><div class="card-title">👥 Équipe HYS FOOD — ${today}</div>
           <button class="btn btn-ghost btn-sm" onclick="renderPagePresenceRT()">🔄 Actualiser</button>
         </div>
         <div class="table-wrap"><table>
@@ -3093,18 +3282,25 @@ function renderPagePresenceRT() {
 
             let statut, statutClass;
             const now = new Date();
-            const jourOuvre = now.getDay() !== 0 && now.getDay() !== 6;
-            const settingsRT = store.settings();
-            const [hD,mD] = (settingsRT.heureDebut||'08:00').split(':').map(Number);
-            const [hF,mF] = (settingsRT.heureFin||'16:00').split(':').map(Number);
+            const attendu = getExpectedScheduleForUser(u.id, today);
+            const jourOuvre = !!attendu;
+            const [hD,mD] = attendu ? attendu.heureDebut.split(':').map(Number) : [8,0];
+            const [hF,mF] = attendu ? attendu.heureFin.split(':').map(Number) : [20,0];
             const seuilRetardRT = new Date(now); seuilRetardRT.setHours(hD, mD+RETARD_TOLERANCE_MIN, 0, 0);
             const seuilOubliRT  = new Date(now); seuilOubliRT.setHours(hF, mF+OUBLI_SORTIE_TOLERANCE_MIN, 0, 0);
             const sortie = [...pts].reverse().find(p => p.type === 'sortie');
+            const planningJour = store.getPlanningUser(u.id)?.jours?.[jourKeyFromDate(today)];
             if (absence) {
               const info = ABSENCE_TYPES[absence.type] || ABSENCE_TYPES.absence;
               statut = `${info.icon} ${info.label}`;
               statutClass = info.badge;
-            } else if (!entree && jourOuvre && now > seuilRetardRT) {
+            } else if (!jourOuvre && planningJour?.lieu === 'cfa') {
+              statut = '🎓 En CFA';
+              statutClass = 'badge-blue';
+            } else if (!jourOuvre) {
+              statut = '💤 Repos';
+              statutClass = 'badge-gray';
+            } else if (!entree && now > seuilRetardRT) {
               statut = '⏰ En retard';
               statutClass = 'badge-amber';
             } else if (isIn) {
@@ -3134,29 +3330,6 @@ function renderPagePresenceRT() {
         </table></div>
       </div>
 
-      <!-- Formateurs -->
-      <div class="card">
-        <div class="card-header"><div class="card-title">🎓 Formateurs externes — ${today}</div></div>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Formateur</th><th>Spécialité</th><th>Statut</th><th>Arrivée</th><th>Heures/jour</th></tr></thead>
-          <tbody>${formateurs.length === 0
-            ? `<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text3)">Aucun formateur externe</td></tr>`
-            : formateurs.map(u => {
-              const pts = getPointagesUserDay(u.id, today).sort((a,b)=>a.timestamp-b.timestamp);
-              const isIn = pts.length > 0 && pts[pts.length-1].type === 'entree';
-              const entree = pts.find(p => p.type === 'entree');
-              const heures = calcHeuresJour(pts);
-              return `<tr>
-                <td class="td-bold">${esc(u.prenom)} ${esc(u.nom)}</td>
-                <td class="text-xs text-muted">${u.service||'—'}</td>
-                <td><span class="badge ${isIn?'badge-green':'badge-gray'}">${isIn?'✅ Présent':'—'}</span></td>
-                <td class="td-mono text-xs">${entree ? entree.heure.slice(0,5) : '—'}</td>
-                <td>${heures > 0 ? `<span class="badge badge-blue">${formatDuree(heures)}</span>` : '—'}</td>
-              </tr>`;
-            }).join('')
-          }</tbody>
-        </table></div>
-      </div>
     </div>`;
   document.querySelectorAll('.presrt-correct').forEach(btn => {
     btn.addEventListener('click', () => showModalCorrection(btn.getAttribute('data-uid'), today));
@@ -3824,7 +3997,7 @@ function renderPagePlanningCFA(weekOffset = 0) {
           ${days.map(d => {
             const isToday = d.date === dateStr(new Date());
             const isCfa = semCfa && d.date >= semCfa.debut && d.date <= semCfa.fin;
-            return `<div style="padding:8px;text-align:center;border-right:1px solid var(--border);background:${isToday ? 'rgba(46,189,107,.08)' : isCfa ? 'rgba(46,189,107,.04)' : 'var(--bg3)'};border-bottom:${isToday ? '2px solid var(--hys-green)' : 'none'}">
+            return `<div style="padding:8px;text-align:center;border-right:1px solid var(--border);background:${isToday ? 'rgba(228,57,46,.08)' : isCfa ? 'rgba(228,57,46,.04)' : 'var(--bg3)'};border-bottom:${isToday ? '2px solid var(--hys-green)' : 'none'}">
               <div style="font-size:11px;font-weight:700;color:${isToday ? 'var(--hys-green)' : 'var(--text2)'}">${d.label}</div>
               <div style="font-size:18px;font-weight:800;color:${isToday ? 'var(--hys-green)' : 'var(--text)'}">${d.dayNum}</div>
             </div>`;
@@ -3837,10 +4010,10 @@ function renderPagePlanningCFA(weekOffset = 0) {
           ${days.map(d => {
             const pts = formateurs.flatMap(f => getPointagesUserDay(f.id, d.date).filter(p => p.type === 'entree' && p.heure < '12:00'));
             const emargs = store.emargements().filter(e => e.date === d.date && e.session === 'matin' && semCfa && e.promotion === semCfa.promotion);
-            return `<div style="padding:6px;border-right:1px solid var(--border);min-height:60px;background:${semCfa && d.date >= semCfa.debut && d.date <= semCfa.fin ? 'rgba(46,189,107,.02)' : 'transparent'}">
+            return `<div style="padding:6px;border-right:1px solid var(--border);min-height:60px;background:${semCfa && d.date >= semCfa.debut && d.date <= semCfa.fin ? 'rgba(228,57,46,.02)' : 'transparent'}">
               ${pts.length > 0 ? pts.map(p => {
                 const f = formateurs.find(u => getPointagesUserDay(u.id, d.date).some(x => x.id === p.id));
-                return `<div style="font-size:10px;background:rgba(46,189,107,.1);border-radius:4px;padding:2px 5px;margin-bottom:2px;color:var(--hys-green);font-weight:600">${f ? f.prenom.charAt(0)+'. '+f.nom.split(' ')[0] : '—'}</div>`;
+                return `<div style="font-size:10px;background:rgba(228,57,46,.1);border-radius:4px;padding:2px 5px;margin-bottom:2px;color:var(--hys-green);font-weight:600">${f ? f.prenom.charAt(0)+'. '+f.nom.split(' ')[0] : '—'}</div>`;
               }).join('') : '<div style="font-size:10px;color:var(--text3);text-align:center;padding:8px 0">—</div>'}
               ${emargs.length > 0 ? `<div style="font-size:9px;color:var(--blue3);background:rgba(59,130,246,.08);border-radius:4px;padding:2px 4px;margin-top:2px">✍ ${emargs.length} émarg.</div>` : ''}
             </div>`;
@@ -3853,10 +4026,10 @@ function renderPagePlanningCFA(weekOffset = 0) {
           ${days.map(d => {
             const pts = formateurs.flatMap(f => getPointagesUserDay(f.id, d.date).filter(p => p.type === 'entree' && p.heure >= '12:00'));
             const emargs = store.emargements().filter(e => e.date === d.date && e.session === 'apresmidi' && semCfa && e.promotion === semCfa.promotion);
-            return `<div style="padding:6px;border-right:1px solid var(--border);min-height:60px;background:${semCfa && d.date >= semCfa.debut && d.date <= semCfa.fin ? 'rgba(46,189,107,.02)' : 'transparent'}">
+            return `<div style="padding:6px;border-right:1px solid var(--border);min-height:60px;background:${semCfa && d.date >= semCfa.debut && d.date <= semCfa.fin ? 'rgba(228,57,46,.02)' : 'transparent'}">
               ${pts.length > 0 ? pts.map(p => {
                 const f = formateurs.find(u => getPointagesUserDay(u.id, d.date).some(x => x.id === p.id));
-                return `<div style="font-size:10px;background:rgba(46,189,107,.1);border-radius:4px;padding:2px 5px;margin-bottom:2px;color:var(--hys-green);font-weight:600">${f ? f.prenom.charAt(0)+'. '+f.nom.split(' ')[0] : '—'}</div>`;
+                return `<div style="font-size:10px;background:rgba(228,57,46,.1);border-radius:4px;padding:2px 5px;margin-bottom:2px;color:var(--hys-green);font-weight:600">${f ? f.prenom.charAt(0)+'. '+f.nom.split(' ')[0] : '—'}</div>`;
               }).join('') : '<div style="font-size:10px;color:var(--text3);text-align:center;padding:8px 0">—</div>'}
               ${emargs.length > 0 ? `<div style="font-size:9px;color:var(--blue3);background:rgba(59,130,246,.08);border-radius:4px;padding:2px 4px;margin-top:2px">✍ ${emargs.length} émarg.</div>` : ''}
             </div>`;
@@ -4085,7 +4258,7 @@ function renderKioskHome() {
   kv.innerHTML = `
     <div style="text-align:center;width:100%;max-width:480px;padding:32px 24px">
       <!-- Logo + titre -->
-      <svg width="72" height="72" viewBox="0 0 200 200" style="margin-bottom:12px;filter:drop-shadow(0 4px 16px rgba(46,189,107,.4))"><use href="#hys-logo"/></svg>
+      <svg width="72" height="72" viewBox="0 0 200 200" style="margin-bottom:12px;filter:drop-shadow(0 4px 16px rgba(228,57,46,.4))"><use href="#hys-logo"/></svg>
       <div style="font-size:28px;font-weight:900;color:var(--text);letter-spacing:-1px"><span style="color:var(--hys-green)">HYS</span> PointPro</div>
       <div style="font-size:13px;color:var(--text3);margin-top:4px">Mode kiosque · CFA Apprentissage</div>
 
@@ -4096,7 +4269,7 @@ function renderKioskHome() {
       </div>
 
       <!-- CTA -->
-      <button onclick="renderKioskPIN()" style="margin-top:20px;background:linear-gradient(135deg,var(--hys-green),var(--hys-green2));color:#fff;border:none;border-radius:16px;padding:20px 48px;font-size:18px;font-weight:700;cursor:pointer;font-family:var(--font);box-shadow:0 8px 32px rgba(46,189,107,.35);transition:transform .15s" onmousedown="this.style.transform='scale(.97)'" onmouseup="this.style.transform='scale(1)'">
+      <button onclick="renderKioskPIN()" style="margin-top:20px;background:linear-gradient(135deg,var(--hys-green),var(--hys-green2));color:#fff;border:none;border-radius:16px;padding:20px 48px;font-size:18px;font-weight:700;cursor:pointer;font-family:var(--font);box-shadow:0 8px 32px rgba(228,57,46,.35);transition:transform .15s" onmousedown="this.style.transform='scale(.97)'" onmouseup="this.style.transform='scale(1)'">
         👉 Pointer ma présence
       </button>
 
@@ -5222,6 +5395,7 @@ const SYNC_MAP = [
   { table: 'hysfood_soldes_cp',    sk: 'hysfood_soldes_cp',    label: 'Soldes CP'    },
   { table: 'hysfood_notifications',sk: 'hysfood_notifs',       label: 'Notifications'},
   { table: 'hysfood_audit',        sk: 'hysfood_audit',        label: 'Audit'        },
+  { table: 'hysfood_planning',     sk: 'hysfood_planning',     label: 'Planning'     },
 ];
 
 // Pull depuis Supabase → localStorage
@@ -5306,6 +5480,7 @@ const _syncTableMap = {
   'hysfood_soldes_cp':    'hysfood_soldes_cp',
   'hysfood_notifs':       'hysfood_notifications',
   'hysfood_audit':        'hysfood_audit',
+  'hysfood_planning':     'hysfood_planning',
 };
 
 store.set = function(key, val) {
@@ -5519,6 +5694,13 @@ create table if not exists hysfood_settings (
   "updatedAt" timestamptz default now()
 );
 
+-- Table planning hebdomadaire (un enregistrement par salarié)
+create table if not exists hysfood_planning (
+  "userId" text primary key,
+  jours jsonb,
+  "updatedAt" timestamptz default now()
+);
+
 -- RLS : désactivé pour commencer (activer après tests)
 -- alter table hysfood_users enable row level security;
 
@@ -5682,7 +5864,7 @@ renderSidebar = function() {
 const QUALIOPI_CRITERES = [
   {
     id: 'C1', label: 'Information du public',
-    color: '#2ebd6b', icon: '📢',
+    color: '#E4392E', icon: '📢',
     indicateurs: [
       { id:'1.1', label:'Conditions d\'accès et délais', auto: false },
       { id:'1.2', label:'Tarifs et modalités de financement', auto: false },
@@ -6150,7 +6332,7 @@ async function exportQualiopiPDF() {
         doc.setTextColor(30,30,30);
         doc.text(ind.label, M+18, y);
         if (score !== null) {
-          const [sr,sg,sb] = score>=80?[46,189,107]:score>=60?[245,158,11]:[239,68,68];
+          const [sr,sg,sb] = score>=80?[228,57,46]:score>=60?[245,158,11]:[239,68,68];
           doc.setTextColor(sr,sg,sb);
           doc.setFont('helvetica','bold');
           doc.text(`${score}%`, W-M-5, y, {align:'right'});
@@ -6187,7 +6369,7 @@ async function exportQualiopiPDF() {
       doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(80,80,80);
       doc.text(label, M+4, y);
       doc.setFont('helvetica','bold');
-      doc.setTextColor(val!==null?[46,189,107]:[180,180,180]);
+      doc.setTextColor(val!==null?[228,57,46]:[180,180,180]);
       doc.text(val !== null ? String(val)+'%' : '—', W-M-5, y, {align:'right'});
       y += 7;
     });
@@ -6196,7 +6378,7 @@ async function exportQualiopiPDF() {
     const np = doc.getNumberOfPages();
     for(let p=1;p<=np;p++){
       doc.setPage(p);
-      doc.setFillColor(46,189,107);
+      doc.setFillColor(228,57,46);
       doc.rect(0,290,210,7,'F');
       doc.setFont('helvetica','normal');
       doc.setFontSize(7);
@@ -6444,7 +6626,7 @@ function showModalAddModule() {
   const settings   = store.settings();
   const promotions = settings.promotions || [];
   const formateurs = store.users().filter(u=>u.role===ROLES.FORMATEUR&&u.statut==='actif');
-  const couleurs   = ['#2ebd6b','#3b82f6','#8b5cf6','#f59e0b','#ef4444','#0d9488','#ec4899'];
+  const couleurs   = ['#E4392E','#3b82f6','#8b5cf6','#f59e0b','#ef4444','#0d9488','#ec4899'];
 
   openModal('📚 Nouveau module', `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
