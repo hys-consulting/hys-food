@@ -804,6 +804,28 @@ function esc(v) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 }
+function now() { return new Date().toISOString(); }
+function dateStr(d) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+function timeStr(d) { return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:${String(d.getSeconds()).padStart(2,'0')}`; }
+function showAlert(el, msg, type) { if (!el) return; el.className = `alert alert-${type}`; el.innerHTML = msg; el.style.display = 'flex'; }
+function timeAgo(ts) {
+  const diff = Date.now() - ts;
+  if (diff < 60000) return 'À l\'instant';
+  if (diff < 3600000) return Math.floor(diff/60000) + ' min';
+  if (diff < 86400000) return Math.floor(diff/3600000) + 'h';
+  return new Date(ts).toLocaleDateString('fr-FR');
+}
+function formatDuree(minutes) {
+  if (!minutes || minutes <= 0) return '0h00';
+  const h = Math.floor(minutes / 60), m = minutes % 60;
+  return `${h}h${String(m).padStart(2,'0')}`;
+}
+function downloadCSV(rows, filename) {
+  const csv = rows.map(r => r.map(c => `"${String(c||'').replace(/"/g,'""')}"`).join(';')).join('\n');
+  const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = filename; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
 
 // Postes réels des salarié(e)s HYS FOOD
 const POSTES_HYS = [
