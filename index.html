@@ -2225,7 +2225,7 @@ function showModalEditPlanning(userId) {
   const defCreneau = [{ debut: s.heureDebut||'08:00', fin: s.heureFin||'20:00' }];
 
   const overlay = document.createElement('div');
-  overlay.className = 'modal-overlay';
+  overlay.className = 'modal-overlay open';
   overlay.innerHTML = `
     <div class="modal" style="max-width:760px">
       <div class="modal-header">
